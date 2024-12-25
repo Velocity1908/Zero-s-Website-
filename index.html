@@ -404,7 +404,7 @@
               </h2>
             </div>
                   <iframe
-                    src="https://www.youtube.com/embed?listType=playlist&list=UC_itPq6ucqGxinpX1UIaGMA">
+                    src="https://www.youtube.com/embed?listType=user_uploads&list=UC_itPq6ucqGxinpX1UIaGMA ">
                   </iframe>
               <div>
       </div>
@@ -418,39 +418,6 @@
 
 
 
-    <script>
-        const API_KEY = 'UC_itPq6ucqGxinpX1UIaGMA';
-        const CHANNEL_ID = 'UC_itPq6ucqGxinpX1UIaGMA';
-        const thumbnail = document.getElementById('thumbnail');
-        const videoFrame = document.getElementById('videoFrame');
-
-        async function fetchLatestVideo() {
-            const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&order=date&part=snippet&type=video&maxResults=1`);
-            const data = await response.json();
-            if (data.items && data.items.length > 0) {
-                const latestVideo = data.items[0];
-                const videoId = latestVideo.id.videoId;
-                const title = latestVideo.snippet.title;
-                const imgUrl = latestVideo.snippet.thumbnails.high.url;
-
-                thumbnail.src = imgUrl;
-                thumbnail.alt = title;
-                // Set the link and display the video
-                thumbnail.onclick = function() {
-                    videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
-                    thumbnail.style.display = 'none'; // Hide thumbnail when playing video
-                    videoFrame.style.display = 'block'; // Show video frame
-                };
-
-                // Check if there's a video to display initially
-                if (videoId) {
-                    videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
-                }
-            }
-        }
-
-        fetchLatestVideo();
-    </script>
   </section>
 
   <!-- end contact section -->
